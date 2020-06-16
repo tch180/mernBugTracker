@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const cors = require ('cors');
 require('dotenv').config();
 
@@ -12,6 +13,7 @@ require('dotenv').config();
  app.use(cors());
 
 
+ app.use(bodyParser.urlencoded({ extended: true }));
 
  const PORT = process.env.PORT || 3000
  app.listen(PORT, ()=> console.log(`----------- Server is up and running on port:${PORT}-----------`));
@@ -30,3 +32,4 @@ mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {
 
      //Routes 
      app.use("/users", require("./routes/userRouter"));
+     app.use("/bugs", require("./routes/bugRouter"));

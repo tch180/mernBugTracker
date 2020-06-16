@@ -8,7 +8,7 @@ function home() {
           <h1 className="display-4">Current Bugs</h1>
           <p className="lead">Bug Status</p>
           <div className="bugContainer" style={{display:'flex', justifyContent:"spaceBetween"}}>
-          <div class="card" style={{width: '18rem'}}>
+          <div className="card" style={{width: '18rem'}}>
             <div className="card-body">
               <h5 className="card-title">Submitted</h5>
               <p className="card-text">
