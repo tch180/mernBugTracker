@@ -15,28 +15,26 @@ router.get('/allBugs', async (req,res)=>{
         .json({ error: err.message})
     }
 })
-
-
-
-
-
-
 //Post new Bug
 router.post("/newBug", async (req, res)=>{
     try {
-        let { name, description, status} = req.body;
         console.log("submit new bug hit")
+        let { name, description, status} = req.body;
+    // validation 
+        if(!name || !description || !status)
+        return res.status(400).json({msg: "Please enter all fields, Description must be at least 144 characters"})
+        
+        if(description.length < 144)
+        return res.status(400).json({msg: 'Description needs to be at least 144 chars'})
+
+        // if no status, default status is submitted 
+        if(!status) status = "submitted";
+        //saving new bug 
         const newBug = new bugModel({
             name,
             description,
             status,
         });
-        // validation 
-        if(!name || !description || !status)
-        return res.status(400).json({msg: "Please enter all fields, description must be at least 144 characters"})
-        // if no status, default status is submitted 
-        if(!status) status = "submitted";
-        //saving new bug 
         const savedBug = await newBug.save();
         console.log("saving new bug")
         res.json(savedBug);
@@ -47,7 +45,6 @@ router.post("/newBug", async (req, res)=>{
 
     }
 })
-
 //Update Bug
 router.patch('/:id', async (req, res)=>{
     try {
@@ -70,8 +67,6 @@ router.patch('/:id', async (req, res)=>{
         .json({ error: err.message})
     }
 })
-
-
 //delete bugs 
 router.delete('/:id', async (req, res)=>{
     try {

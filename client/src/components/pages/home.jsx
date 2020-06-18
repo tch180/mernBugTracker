@@ -3,7 +3,7 @@ import React from "react";
 function home() {
   return (
     <div>
-      <div className="jumbotron jumbotron-fluid" style={{display:'flex', flexDirection:'row'}}>
+      <div className="jumbotron jumbotron-fluid shadow-lg p-3 mb-5 bg-white  rounded" style={{display:'flex', flexDirection:'row'}}>
         <div className="container">
           <h1 className="display-4">Current Bugs</h1>
           <p className="lead">Bug Status</p>

@@ -28,6 +28,8 @@ router.post("/register", async (req, res) => {
         .json({ msg: "An account with this email already exists." });
     // if no display name display email
     if (!displayName) displayName = email;
+    // create validation to check if displayName already exist 
+
     // Salting
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
@@ -112,6 +114,14 @@ router.post("/tokenIsValid", async (req, res  )=>{
   .json({msg: error.message})
 
   }
+})
+
+router.get("/",auth, async (req,res)=>{
+  const user =  await User.findById(req.user);
+  res.json({
+    displayName:user.displayName,
+    id: user._id,
+  });
 })
 
 module.exports = router;
