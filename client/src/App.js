@@ -62,6 +62,7 @@ function App() {
         <Route path='/register' component={register}/>
         <Route path='/user' component={userprofile}/>
         <Route path='/bugs' component={BugsHome}/>
+        <Route path='/bugs/:bugId' />
         <Route path='/newbugs' component={NewBug}/>
         <Route path='/viewbugs' component={viewbugs}/>
 
@@ -69,7 +70,6 @@ function App() {
         
       </Switch>
       </UserContext.Provider>
-
     </BrowserRouter>
     </GlobalBugProvider>
 

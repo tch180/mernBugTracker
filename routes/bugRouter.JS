@@ -9,6 +9,7 @@ router.get('/allBugs', async (req,res)=>{
         console.log("get all bugs route")
         const bugs = await bugModel.find({})
         res.json(bugs)
+        
     } catch (error) {
         res 
         .status(500)
@@ -72,12 +73,13 @@ router.delete('/:id', async (req, res)=>{
     try {
         console.log("delete route hit on bugs")
         const deleteBug = await bugModel.findByIdAndDelete(req.params.id);
+        console.log('bug ID:', req.params.id)
         res.json(deleteBug);
         console.log("bug deleted ")
-    } catch (error) {
+    } catch (err) {
         res 
         .status(500)
-        .json({ error:err.message})
+        .json({ error:err.message,})
     }
 })
 

@@ -1,6 +1,8 @@
 import React from 'react'
 
 export default function userprofile() {
+
+    // get user info from local storage and display that info in the return. 
     return (
         <div>
             <div className="card" style={{width: "12rem"}}>

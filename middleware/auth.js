@@ -13,7 +13,6 @@ const auth = (req, res, next) => {
       return res
         .status(401)
         .json({ msg: "ACCESS DENIED STOP TRYING TO DELETE ME .... " });
-
     req.user = verified.id;
     next();
   } catch (err) {

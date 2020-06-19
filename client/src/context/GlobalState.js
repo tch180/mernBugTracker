@@ -20,10 +20,10 @@ const [state, dispatch] = useReducer(AppReducer, initialBugState);
 
 
 // Actions 
-function deleteBug(id){
+function deleteBug(_id){
     dispatch({
         type: 'DELETE_BUG',
-        payload:id
+        payload:_id
     });
 }
 
